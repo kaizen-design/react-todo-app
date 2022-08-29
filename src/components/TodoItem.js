@@ -1,7 +1,63 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./TodoItem.module.css"
 
-class TodoItem extends React.Component {  
+const TodoItem = (props) => {
+  const { id, title, completed } = props.todo;
+
+  const [editMode, setEditMode] = useState(false);
+
+  let editModeStyles = {};
+  let viewModeStyles = {};
+
+  if (editMode) {
+    viewModeStyles.display = "none"
+  } else {
+    editModeStyles.display = "none";
+  }
+
+  const handleEditing = () => {
+    setEditMode(true)
+  };
+
+  const handleUpdateDone = (e) => {
+    if (e.key === "Enter") {
+      setEditMode(false)
+    }
+  }
+
+  return (
+    <li className={styles.item}>   
+      <div onDoubleClick={handleEditing} style={viewModeStyles}>
+        <label htmlFor={id}>
+          <input 
+            type="checkbox" 
+            id={id}
+            className={styles.checkbox}
+            checked={completed} 
+            onChange={() => props.handleChangeProps(id)} /> 
+          <span className={completed ? styles.completed : null}>
+            {title}
+          </span>
+        </label>
+        <button 
+          onClick={() => props.handleDeleteTodoProps(id)}>
+          Delete
+        </button>
+      </div>  
+      <input 
+        type="text" 
+        className={styles.textInput} 
+        style={editModeStyles} 
+        value={title} 
+        onChange={e => {
+          props.handleItemUpdate(e.target.value, id)
+        }} 
+        onKeyDown={handleUpdateDone} />                                
+    </li>
+  );
+}
+
+/* class TodoItem extends React.Component {  
 
   state = {
     editMode: false
@@ -63,5 +119,5 @@ class TodoItem extends React.Component {
       </li>
     );
   }  
-}
+} */
 export default TodoItem;
