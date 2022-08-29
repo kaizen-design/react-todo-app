@@ -1,21 +1,22 @@
-import React from "react";
-
-class TodoInput extends React.Component {   
-  state = {
+import React, { useState } from "react";
+ 
+const TodoInput = (props) => {  
+  const [inputText, setInputText] = useState({
     title: ''
-  }
+  });
 
-  onChange = (e) => {
-    this.setState({
+  const onChange = (e) => {
+    setInputText({
+      ...inputText,
       [e.target.name]: e.target.value
     })
   }
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (this.state.title.trim()) {
-      this.props.handleAddTodoItemProps(this.state.title);
-      this.setState({
+    if (inputText.title.trim()) {
+      props.handleAddTodoItemProps(inputText.title);
+      setInputText({
         title: ''
       })
     } else {
@@ -23,19 +24,18 @@ class TodoInput extends React.Component {
     }    
   }
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit} className="form-container">
-        <input 
-          type="text" 
-          name="title"
-          className="input-text"
-          placeholder="Add Todo..." 
-          value={this.state.title} 
-          onChange={this.onChange} />
-        <button>Submit</button>
-      </form>
-    );
-  }
+  return (
+    <form onSubmit={handleSubmit} className="form-container">
+      <input 
+        type="text" 
+        name="title"
+        className="input-text"
+        placeholder="Add Todo..." 
+        value={inputText.title} 
+        onChange={onChange} />
+      <button>Submit</button>
+    </form>
+  );
 }
+
 export default TodoInput;
