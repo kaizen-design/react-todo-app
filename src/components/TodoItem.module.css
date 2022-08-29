@@ -2,7 +2,14 @@
   font-size: 1.2rem;
   list-style-type: none;
   padding: 17px 0px;
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;  
+}
+
+.completed {
+  font-style: italic;
+  color: #595959;
+  opacity: 0.4;
+  text-decoration: line-through;
 }
 
 .checkbox {
@@ -20,4 +27,10 @@
   height: 50px;
   width: 50px;
   margin: -10px 0 0 10px;
+}
+
+.textInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dfdfdf;
 }
