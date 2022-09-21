@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../context";
 import { FaPlusCircle } from "react-icons/fa"
  
 const TodoInput = (props) => {  
+
+  const value = useContext(Context);
+  const { handleAddTodoItemProps } = value;
+
   const [inputText, setInputText] = useState({
     title: ''
   });
@@ -16,7 +21,7 @@ const TodoInput = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputText.title.trim()) {
-      props.handleAddTodoItemProps(inputText.title);
+      handleAddTodoItemProps(inputText.title);
       setInputText({
         title: ''
       })

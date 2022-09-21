@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../context";
 import { FaTrash } from "react-icons/fa";
 import styles from "./TodoItem.module.css"
 
@@ -26,7 +27,10 @@ const TodoItem = (props) => {
     }
   }
 
-  return (
+  const context = useContext(Context);
+  const { handleChangeProps, handleDeleteTodoProps, handleItemUpdate } = context;
+
+  return (    
     <li className={styles.item}>   
       <div onDoubleClick={handleEditing} style={viewModeStyles}>
         <label htmlFor={id}>
@@ -35,13 +39,13 @@ const TodoItem = (props) => {
             id={id}
             className={styles.checkbox}
             checked={completed} 
-            onChange={() => props.handleChangeProps(id)} /> 
+            onChange={() => handleChangeProps(id)} /> 
           <span className={completed ? styles.completed : null}>
             {title}
           </span>
         </label>
         <button 
-          onClick={() => props.handleDeleteTodoProps(id)}>
+          onClick={() => handleDeleteTodoProps(id)}>
           <FaTrash style={{ color: "orangered", fontSize: "16px" }} />
         </button>
       </div>  
@@ -51,10 +55,10 @@ const TodoItem = (props) => {
         style={editModeStyles} 
         value={title} 
         onChange={e => {
-          props.handleItemUpdate(e.target.value, id)
+          handleItemUpdate(e.target.value, id)
         }} 
         onKeyDown={handleUpdateDone} />                                
-    </li>
+    </li>        
   );
 }
 

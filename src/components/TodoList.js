@@ -1,18 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import TodoItem from "./TodoItem";
+import { Context } from "../context";
 
-const TodoList = (props) => {
-  return (
+const TodoList = (props) => {  
+  const context = useContext(Context);
+  const { todos } = context;
+  return (    
     <ul>
-      {props.todos.map(todo => (
-        <TodoItem 
-          key={todo.id} 
-          todo={todo} 
-          handleChangeProps={props.handleChangeProps} 
-          handleDeleteTodoProps={props.handleDeleteTodoProps} 
-          handleItemUpdate={props.handleItemUpdate} />
+      {todos.map(todo => (
+        <TodoItem key={todo.id} todo={todo} />
       ))}
-    </ul>
+    </ul>        
   );
 }
 
