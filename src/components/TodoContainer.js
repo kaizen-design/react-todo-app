@@ -78,19 +78,17 @@ const TodoContainer = () => {
     });      
   }
 
-  return (
-    <div className="container">
-      <div className="inner">
-        <Header />
-        <TodoInput  
-          handleAddTodoItemProps={handleAddTodoItem} />
-        <TodoList 
-          todos={todos} 
-          handleChangeProps={handleChange} 
-          handleDeleteTodoProps={handleDeleteTodo} 
-          handleItemUpdate={handleItemUpdate} />
-      </div>    
-    </div>      
+  return (    
+    <>
+      <Header />
+      <TodoInput  
+        handleAddTodoItemProps={handleAddTodoItem} />
+      <TodoList 
+        todos={todos} 
+        handleChangeProps={handleChange} 
+        handleDeleteTodoProps={handleDeleteTodo} 
+        handleItemUpdate={handleItemUpdate} />
+    </>         
   );
 }
 
