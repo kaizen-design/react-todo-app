@@ -2,7 +2,7 @@ import React from 'react';
 import { createRoot } from "react-dom/client";
 import './index.css';
 import TodoContainer from "./components/TodoContainer";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { HashRouter, Routes, Route, Outlet } from "react-router-dom";
 import About from './pages/About';
 import NotMatch from './pages/NotMatch';
 import Navbar from './components/Navbar';
@@ -10,7 +10,7 @@ import SinglePage from './pages/SinglePage';
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>  
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<TodoContainer />} />          
@@ -20,7 +20,7 @@ createRoot(document.getElementById("root")).render(
           <Route path="*" element={<NotMatch />} />
         </Route>
       </Routes>    
-    </BrowserRouter>    
+    </HashRouter>    
   </React.StrictMode>
 );
 
