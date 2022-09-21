@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Context } from "../context";
 import { FaPlusCircle } from "react-icons/fa"
  
-const TodoInput = (props) => {  
+const TodoInput = () => {  
 
   const value = useContext(Context);
   const { handleAddTodoItemProps } = value;

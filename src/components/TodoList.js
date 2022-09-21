@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import TodoItem from "./TodoItem";
 import { Context } from "../context";
 
-const TodoList = (props) => {  
+const TodoList = () => {  
   const context = useContext(Context);
   const { todos } = context;
   return (    
