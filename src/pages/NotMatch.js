@@ -2,7 +2,7 @@ import React from "react";
 
 const NotMatch = () => {
   return (
-    <div>Not match page</div>
+    <div className="main__content">Nothing found.</div>
   )
 }
 
